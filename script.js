@@ -33,7 +33,7 @@ const ticTacToeGame = (() => {
   let _xMarkOwner = _computerPlayer;
   let _oMarkOwner = _userPlayer;
 
-  function playTurn() {
+  function playerPlayTurn() {
     console.error("Not implemented");
   };
 
@@ -52,7 +52,7 @@ const ticTacToeGame = (() => {
   return {
     setDisplay: _userIntefaceController.setDisplay,
     setUserPlayerName: _userPlayer.setName,
-    playTurn,
+    playerPlayTurn,
     resetGame,
     getScore,
     getBoard
