@@ -27,6 +27,9 @@ const ticTacToeGame = (() => {
     return {getName, setName, getWins, addWin, getLosses, addLoss};
   })();
 
+  let _computerPlayer = playerFactory("Computer")
+  let _userPlayer = playerFactory("Player")
+
   function playTurn() {
     console.error("Not implemented");
   };
