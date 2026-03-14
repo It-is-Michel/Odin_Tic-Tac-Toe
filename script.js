@@ -12,6 +12,21 @@ const ticTacToeGame = (() => {
   const _emptyCell = null;
   const _board = new Array(3).fill(null).map(() => new Array(3).fill(_emptyCell))
 
+  const playerFactory = ((_userName) => {
+    const getName = () => _userName;
+    const setName = (newName) => {_userName = newName};
+
+    let _wins = 0;
+    const getWins = () => _wins;
+    const addWin = () => _wins++;
+
+    let _losses = 0;
+    const getLosses = () => _losses;
+    const addLoss = () => _losses++;
+
+    return {getName, setName, getWins, addWin, getLosses, addLoss};
+  })();
+
   function playTurn() {
     console.error("Not implemented");
   };
