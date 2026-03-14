@@ -51,6 +51,7 @@ const ticTacToeGame = (() => {
 
   return {
     setDisplay: _userIntefaceController.setDisplay,
+    setUserPlayerName: _userPlayer.setName,
     playTurn,
     resetGame,
     getScore,
