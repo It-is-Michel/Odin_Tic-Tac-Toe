@@ -2,7 +2,7 @@ const ticTacToeGame = (() => {
 
   const _userIntefaceController = (() => {
     function setDisplay(displayContainer) {
-
+    console.error("Not implemented");
     };
 
     return {setDisplay};
@@ -13,15 +13,15 @@ const ticTacToeGame = (() => {
   const _board = new Array(3).fill(null).map(() => new Array(3).fill(_emptyCell))
 
   function playTurn() {
-
+    console.error("Not implemented");
   };
 
   function resetGame() {
-
+    console.error("Not implemented");
   };
 
   function getScore() {
-
+    console.error("Not implemented");
   };
 
   function getBoard() {
