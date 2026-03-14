@@ -25,7 +25,7 @@ const ticTacToeGame = (() => {
   };
 
   function getBoard() {
-
+    return _board.map(row => [...row]);
   };
 
   return {
