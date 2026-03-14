@@ -30,6 +30,9 @@ const ticTacToeGame = (() => {
   let _computerPlayer = playerFactory("Computer")
   let _userPlayer = playerFactory("Player")
 
+  let _xMarkOwner = _computerPlayer;
+  let _oMarkOwner = _userPlayer;
+
   function playTurn() {
     console.error("Not implemented");
   };
