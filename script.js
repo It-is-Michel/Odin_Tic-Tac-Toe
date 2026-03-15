@@ -50,7 +50,7 @@ const ticTacToeGame = (() => {
   let _playerMark = "x";
   let _computerMark = "o";
 
-  function _checkWinner() {
+  function _getWinner() {
     throw new Error("Not implemented");
   };
 
@@ -59,7 +59,7 @@ const ticTacToeGame = (() => {
       _playPlayerTurn(playerRowChoice, playerColChoice);
     } catch {return};
 
-    let winner = _checkWinner();
+    let winner = _getWinner();
     if (winner) {
       _endGame(winner);
       return;
@@ -67,7 +67,7 @@ const ticTacToeGame = (() => {
 
     _playComputerTurn();
 
-    winner = _checkWinner();
+    winner = _getWinner();
     if (winner) {
       _endGame(winner);
       return;
