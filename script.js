@@ -50,7 +50,7 @@ const ticTacToeGame = (() => {
   let _playerMark = "x";
   let _computerMark = "o";
 
-  function playerPlayTurn(row, col) {
+  function playPlayerTurn(row, col) {
     _playTurn(row, col, _playerMark);
   };
 
@@ -72,7 +72,7 @@ const ticTacToeGame = (() => {
     return _getCellsWith("empty");
   }
 
-  function _computerPlayTurn() {
+  function _playComputerTurn() {
     const emptyCells = _getEmptyCells();
     if (emptyCells.length === 0) throw new Error("Computer couldn't find an empty cell.");
     
@@ -92,7 +92,7 @@ const ticTacToeGame = (() => {
   function _nextTurn() {
     if (_currentTurn === _userPlayer.getName()) {
       _currentTurn = _computerPlayer.getName();
-      _computerPlayTurn();
+      _playComputerTurn();
     } else {
       _currentTurn = _userPlayer.getName()
     };
@@ -127,7 +127,7 @@ const ticTacToeGame = (() => {
 
   return {
     setPlayerName,
-    playTurn : playerPlayTurn,
+    playTurn : playPlayerTurn,
     resetGame,
     getScore,
     getBoard
