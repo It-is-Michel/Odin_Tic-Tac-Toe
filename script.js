@@ -1,13 +1,4 @@
 const ticTacToeGame = (() => {
-
-  const _userIntefaceController = () => {
-    function setDisplay(displayContainer) {
-    console.error("Not implemented");
-    };
-
-    return {setDisplay};
-  };
-
   // A 2D array that represents a 3x3 board
   const _board = new Array(3).fill(null).map(() => new Array(3).fill("empty"))
 
@@ -135,7 +126,6 @@ const ticTacToeGame = (() => {
   };
 
   return {
-    setDisplay: _userIntefaceController.setDisplay,
     setPlayerName,
     playTurn : playerPlayTurn,
     resetGame,
