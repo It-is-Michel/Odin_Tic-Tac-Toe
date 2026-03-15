@@ -173,8 +173,12 @@ const ticTacToeGame = (() => {
     console.log("Invalid movement! Try again...");
   };
 
-  function getScore() {
-    console.error("Not implemented");
+  function getComputerScore() {
+    return {wins: _computer.getWins(), losses: _computer.getLosses()}
+  };
+
+  function getPlayerScore() {
+    return {wins: _userPlayer.getWins(), losses: _userPlayer.getLosses()}
   };
 
   function getBoard() {
@@ -185,7 +189,8 @@ const ticTacToeGame = (() => {
     setPlayerName,
     playTurn : playRound,
     resetGame,
-    getScore,
+    getComputerScore,
+    getPlayerScore,
     getBoard
   };
 })();
