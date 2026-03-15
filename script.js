@@ -134,16 +134,3 @@ const ticTacToeGame = (() => {
   };
 
 })();
-
-console.log(ticTacToeGame.getBoard());
-
-try {
-  const row = 3;
-  const col = 3;
-  ticTacToeGame.setPlayerName("Michel");
-  ticTacToeGame.playTurn(row, col);
-} catch(error) {
-  console.error(error);
-}
-
-console.log(ticTacToeGame.getBoard());
