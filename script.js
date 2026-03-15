@@ -75,6 +75,10 @@ const ticTacToeGame = (() => {
     return false;
   };
 
+  function _endGame() {
+    console.error("Not defined");
+  };
+
   function playRound(playerRowChoice, playerColChoice) {
     try {
       const turnPassed = _playPlayerTurn(playerRowChoice, playerColChoice);
