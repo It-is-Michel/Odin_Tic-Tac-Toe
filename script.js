@@ -50,7 +50,31 @@ const ticTacToeGame = (() => {
   let _playerMark = "x";
   let _computerMark = "o";
 
-  function playPlayerTurn(row, col) {
+  function _checkWinner() {
+
+  }
+
+  function playRound(playerRowChoice, playerColChoice) {
+    try {
+      _playPlayerTurn(playerRowChoice, playerColChoice);
+    } catch {return};
+
+    let winner = _checkWinner();
+    if (winner) {
+      _endGame(winner);
+      return;
+    }
+
+    _playComputerTurn();
+
+    winner = _checkWinner();
+    if (winner) {
+      _endGame(winner);
+      return;
+    }
+  };
+
+  function _playPlayerTurn(row, col) {
     _playTurn(row, col, _playerMark);
   };
 
@@ -84,19 +108,8 @@ const ticTacToeGame = (() => {
   };
 
   function setPlayerName(newName) {
-    if (_currentTurn === _userPlayer.getName()) _currentTurn = newName;
     _userPlayer.setName(newName);
   }
-
-  let _currentTurn = _userPlayer.getName();
-  function _nextTurn() {
-    if (_currentTurn === _userPlayer.getName()) {
-      _currentTurn = _computer.getName();
-      _playComputerTurn();
-    } else {
-      _currentTurn = _userPlayer.getName()
-    };
-  };
 
   function _playTurn(row, col, mark) {
     let movementIsDone = null;
@@ -106,10 +119,7 @@ const ticTacToeGame = (() => {
       console.error(error);
       return;
     }
-    if (movementIsDone) {
-      _nextTurn();
-      return;
-    }
+    if (movementIsDone) return true;
     console.log("Invalid movement! Try again...");
   }
 
@@ -127,10 +137,9 @@ const ticTacToeGame = (() => {
 
   return {
     setPlayerName,
-    playTurn : playPlayerTurn,
+    playTurn : playRound,
     resetGame,
     getScore,
     getBoard
   };
-
 })();
