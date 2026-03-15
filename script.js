@@ -22,7 +22,7 @@ const ticTacToeGame = (() => {
     if (row <= 0 || row > 3) return false;
     if (col <= 0 || col > 3) return false;
     return true;
-  }
+  };
 
   function _setCell(row, col, value) {
     if (!_cellPositionIsValid(row, col)) throw new Error(`(${row}, ${col}) isn't a valid cell.`);
@@ -42,7 +42,7 @@ const ticTacToeGame = (() => {
     if (_cellIsOccupied(cell)) return false;  // If cell wasn't set, return false
     _board[row][col] = value;
     return true;                              // If cell was set, return true
-  }
+  };
 
   let _computer = playerFactory("Computer");
   let _userPlayer = playerFactory("Player");
@@ -52,7 +52,7 @@ const ticTacToeGame = (() => {
 
   function _checkWinner() {
 
-  }
+  };
 
   function playRound(playerRowChoice, playerColChoice) {
     try {
@@ -94,7 +94,7 @@ const ticTacToeGame = (() => {
 
   function _getEmptyCells() {
     return _getCellsWith("empty");
-  }
+  };
 
   function _playComputerTurn() {
     const emptyCells = _getEmptyCells();
@@ -109,7 +109,7 @@ const ticTacToeGame = (() => {
 
   function setPlayerName(newName) {
     _userPlayer.setName(newName);
-  }
+  };
 
   function _playTurn(row, col, mark) {
     let movementIsDone = null;
@@ -121,7 +121,7 @@ const ticTacToeGame = (() => {
     }
     if (movementIsDone) return true;
     console.log("Invalid movement! Try again...");
-  }
+  };
 
   function resetGame() {
     console.error("Not implemented");
