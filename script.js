@@ -100,6 +100,7 @@ const ticTacToeGame = (() => {
         _player.addLoss();
         break;
     }
+    throw new Error("Winner isn't a valid value.");
   };
 
   function resetGame() {
