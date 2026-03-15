@@ -46,7 +46,7 @@ const ticTacToeGame = (() => {
   };
 
   let _computer = playerFactory("Computer");
-  let _userPlayer = playerFactory("Player");
+  let _player = playerFactory("Player");
 
   let _playerMark = "x";
   let _computerMark = "o";
@@ -92,19 +92,19 @@ const ticTacToeGame = (() => {
       case "draw":
         break;
       case "player":
-        _userPlayer.addWin();
+        _player.addWin();
         _computer.addLoss();
         break;
       case "computer":
         _computer.addWin();
-        _userPlayer.addLoss();
+        _player.addLoss();
         break;
     }
   };
 
   function resetGame() {
     _resetBoard();
-    _userPlayer.resetScore();
+    _player.resetScore();
     _computer.resetScore();
   };
 
@@ -158,7 +158,7 @@ const ticTacToeGame = (() => {
   };
 
   function setPlayerName(newName) {
-    _userPlayer.setName(newName);
+    _player.setName(newName);
   };
 
   function _playTurn(cellIndex, mark) {
@@ -178,7 +178,7 @@ const ticTacToeGame = (() => {
   };
 
   function getPlayerScore() {
-    return {wins: _userPlayer.getWins(), losses: _userPlayer.getLosses()}
+    return {wins: _player.getWins(), losses: _player.getLosses()}
   };
 
   function getBoard() {
