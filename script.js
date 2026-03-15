@@ -14,7 +14,12 @@ const ticTacToeGame = (() => {
     const getLosses = () => _losses;
     const addLoss = () => _losses++;
 
-    return {getName, setName, getWins, addWin, getLosses, addLoss};
+    const resetScore = () => {
+      _wins = 0;
+      _losses = 0;
+    };
+
+    return {getName, setName, getWins, addWin, getLosses, addLoss, resetScore};
   };
 
   function _getBoardIndex(row, col) {
@@ -97,6 +102,12 @@ const ticTacToeGame = (() => {
     }
   };
 
+  function resetGame() {
+    _resetBoard();
+    _userPlayer.resetScore();
+    _computer.resetScore();
+  };
+
   function playRound(playerRowChoice, playerColChoice) {
     try {
       const turnPassed = _playPlayerTurn(playerRowChoice, playerColChoice);
@@ -160,10 +171,6 @@ const ticTacToeGame = (() => {
     }
     if (movementIsDone) return true;
     console.log("Invalid movement! Try again...");
-  };
-
-  function resetGame() {
-    console.error("Not implemented");
   };
 
   function getScore() {
