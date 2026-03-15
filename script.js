@@ -75,8 +75,26 @@ const ticTacToeGame = (() => {
     return false;
   };
 
-  function _endGame() {
-    console.error("Not defined");
+  function _resetBoard() {
+    for (i in _board) {
+      _board[i] = "empty";
+    }
+  };
+
+  function _endGame(winner) {
+    _resetBoard();
+    switch (winner) {
+      case "draw":
+        break;
+      case "player":
+        _userPlayer.addWin();
+        _computer.addLoss();
+        break;
+      case "computer":
+        _computer.addWin();
+        _userPlayer.addLoss();
+        break;
+    }
   };
 
   function playRound(playerRowChoice, playerColChoice) {
