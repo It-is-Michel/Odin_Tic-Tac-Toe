@@ -51,7 +51,7 @@ const ticTacToeGame = (() => {
   let _computerMark = "o";
 
   function _checkWinner() {
-
+    throw new Error("Not implemented");
   };
 
   function playRound(playerRowChoice, playerColChoice) {
