@@ -52,7 +52,7 @@ const ticTacToeGame = (() => {
   let _computerMark = "o";
 
   function _getWinner() {
-    if (_getEmptyCells >= 5) return false;
+    if (_getEmptyCells.length >= 5) return false;
 
     function checkWinner(mark) {
       // board indexes:
