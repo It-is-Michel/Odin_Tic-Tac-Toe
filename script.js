@@ -96,19 +96,22 @@ const ticTacToeGame = (() => {
     switch (winner) {
       case "draw":
         _lastWinner = "draw";
+        return;
         break;
       case "player":
         _player.addWin();
         _lastWinner = _player.getName();
         _computer.addLoss();
+        return;
         break;
       case "computer":
         _computer.addWin();
         _lastWinner = "computer";
         _player.addLoss();
+        return;
         break;
     }
-    throw new Error("Winner isn't a valid value.");
+    throw new Error(`Winner (${winner}) isn't a valid value.`);
   };
 
   function resetGame() {
