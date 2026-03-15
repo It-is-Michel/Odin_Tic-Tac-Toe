@@ -86,17 +86,25 @@ const ticTacToeGame = (() => {
     }
   };
 
+  let _lastWinner = null;
+  function getLastWinner() {
+    return _lastWinner;
+  };
+
   function _endGame(winner) {
     _resetBoard();
     switch (winner) {
       case "draw":
+        _lastWinner = "draw";
         break;
       case "player":
         _player.addWin();
+        _lastWinner = _player.getName();
         _computer.addLoss();
         break;
       case "computer":
         _computer.addWin();
+        _lastWinner = "computer";
         _player.addLoss();
         break;
     }
@@ -192,6 +200,7 @@ const ticTacToeGame = (() => {
     resetGame,
     getComputerScore,
     getPlayerScore,
-    getBoard
+    getBoard,
+    getLastWinner,
   };
 })();
