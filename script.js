@@ -1,6 +1,6 @@
 const ticTacToeGame = (() => {
   // A 2D array that represents a 3x3 board
-  const _board = new Array(9).fill(null).map("empty");
+  const _board = new Array(9).fill(null).map(() => "empty");
 
   const playerFactory = (_userName) => {
     const getName = () => _userName;
@@ -26,17 +26,15 @@ const ticTacToeGame = (() => {
     };
     if (!_cellPositionIsValid(row, col)) throw new Error("Invalid cell position.");
 
-    return _board[row * 3 + col - 4];
+    return row * 3 + col - 4;
   };
 
-  function _setCell(row, col, value) {
-    const cellIndex = _getBoardIndex(row, col);
-    
+  function _setCell(cellIndex, value) {
     if (typeof value !== "string") throw new Error("Cells can only contain strings");
     const valueToUpperCase = value.toUpperCase();
-    if (valueToUpperCase !== "X" && valueToUpperCase !== "O") throw new Error(`A cell can't be set to ${value}, just X or O.`)
+    if (valueToUpperCase !== "X" && valueToUpperCase !== "O") throw new Error(`A cell can't be set to ${value}, just X or O.`);
 
-    const cellIsNotEmpty = _board[cellIndex] === "empty";
+    const cellIsNotEmpty = _board[cellIndex] !== "empty";
     if (cellIsNotEmpty) return false;  // If cell can't be set, return false
     _board[cellIndex] = value;
     return true;                       // If cell was set, return true
@@ -54,7 +52,8 @@ const ticTacToeGame = (() => {
 
   function playRound(playerRowChoice, playerColChoice) {
     try {
-      _playPlayerTurn(playerRowChoice, playerColChoice);
+      const turnPassed = _playPlayerTurn(playerRowChoice, playerColChoice);
+      if (!turnPassed) return;
     } catch {return};
 
     let winner = _getWinner();
@@ -73,7 +72,11 @@ const ticTacToeGame = (() => {
   };
 
   function _playPlayerTurn(row, col) {
-    _playTurn(row, col, _playerMark);
+    let cellIndex = null;
+    try {
+      cellIndex = _getBoardIndex(row, col);
+    } catch(error) {console.log(error)};
+    return _playTurn(cellIndex, _playerMark);
   };
 
   function _getCellsWith(str) {
@@ -93,19 +96,17 @@ const ticTacToeGame = (() => {
     
     const randomEmptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     const computerChoice = randomEmptyCell;
-
-    const [row, col] = computerChoice;
-    _playTurn(row, col, _computerMark);
+    _playTurn(computerChoice, _computerMark);
   };
 
   function setPlayerName(newName) {
     _userPlayer.setName(newName);
   };
 
-  function _playTurn(row, col, mark) {
+  function _playTurn(cellIndex, mark) {
     let movementIsDone = null;
     try {
-      movementIsDone = _setCell(row, col, mark);
+      movementIsDone = _setCell(cellIndex, mark);
     } catch(error) {
       console.error(error);
       return;
