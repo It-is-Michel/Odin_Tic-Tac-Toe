@@ -1,6 +1,6 @@
 const ticTacToeGame = (() => {
   // A 2D array that represents a 3x3 board
-  const _board = new Array(3).fill(null).map(() => new Array(3).fill("empty"))
+  const _board = new Array(9).fill(null).map("empty");
 
   const playerFactory = (_userName) => {
     const getName = () => _userName;
@@ -17,31 +17,29 @@ const ticTacToeGame = (() => {
     return {getName, setName, getWins, addWin, getLosses, addLoss};
   };
 
-  function _cellPositionIsValid(row, col) {
-    if (isNaN(row) || isNaN(col)) return false;
-    if (row <= 0 || row > 3) return false;
-    if (col <= 0 || col > 3) return false;
-    return true;
+  function _getBoardIndex(row, col) {
+    function _cellPositionIsValid(row, col) {
+      if (isNaN(row) || isNaN(col)) return false;
+      if (row <= 0 || row > 3) return false;
+      if (col <= 0 || col > 3) return false;
+      return true;
+    };
+    if (!_cellPositionIsValid(row, col)) throw new Error("Invalid cell position.");
+
+    return _board[row * 3 + col - 4];
   };
 
   function _setCell(row, col, value) {
-    if (!_cellPositionIsValid(row, col)) throw new Error(`(${row}, ${col}) isn't a valid cell.`);
+    const cellIndex = _getBoardIndex(row, col);
     
     if (typeof value !== "string") throw new Error("Cells can only contain strings");
     const valueToUpperCase = value.toUpperCase();
     if (valueToUpperCase !== "X" && valueToUpperCase !== "O") throw new Error(`A cell can't be set to ${value}, just X or O.`)
 
-    --row
-    --col  // Convert cell's values to array indexes.
-    let cell = _board[row][col];
-
-    function _cellIsOccupied(cell) {
-      if (cell === "empty") return false;
-      return true;
-    }
-    if (_cellIsOccupied(cell)) return false;  // If cell wasn't set, return false
-    _board[row][col] = value;
-    return true;                              // If cell was set, return true
+    const cellIsNotEmpty = _board[cellIndex] === "empty";
+    if (cellIsNotEmpty) return false;  // If cell can't be set, return false
+    _board[cellIndex] = value;
+    return true;                       // If cell was set, return true
   };
 
   let _computer = playerFactory("Computer");
@@ -79,17 +77,10 @@ const ticTacToeGame = (() => {
   };
 
   function _getCellsWith(str) {
-    const cellPositions = _board.reduce((acc, row, rowI) => {
-      acc.push(row
-                .reduce((acc, item, colI) => {
-                  if (item === str) acc.push(colI);
-                  return acc;
-                }, [])
-                .map((colI) => [rowI+1, colI+1])
-              );
+    return _board.reduce((acc, cell, index) => {
+      if (cell === str) acc.push(index);
       return acc;
-      }, []).flat();
-    return cellPositions;
+      }, []);
   };
 
   function _getEmptyCells() {
@@ -132,7 +123,7 @@ const ticTacToeGame = (() => {
   };
 
   function getBoard() {
-    return _board.map(row => [...row]);
+    return _board;
   };
 
   return {
