@@ -44,7 +44,7 @@ const ticTacToeGame = (() => {
     return true;                              // If cell was set, return true
   }
 
-  let _computerPlayer = playerFactory("Computer");
+  let _computer = playerFactory("Computer");
   let _userPlayer = playerFactory("Player");
 
   let _playerMark = "x";
@@ -91,7 +91,7 @@ const ticTacToeGame = (() => {
   let _currentTurn = _userPlayer.getName();
   function _nextTurn() {
     if (_currentTurn === _userPlayer.getName()) {
-      _currentTurn = _computerPlayer.getName();
+      _currentTurn = _computer.getName();
       _playComputerTurn();
     } else {
       _currentTurn = _userPlayer.getName()
