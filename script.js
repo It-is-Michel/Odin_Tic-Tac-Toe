@@ -47,7 +47,32 @@ const ticTacToeGame = (() => {
   let _computerMark = "o";
 
   function _getWinner() {
-    throw new Error("Not implemented");
+    if (_getEmptyCells >= 5) return false;
+
+    function checkWinner(mark) {
+      // board indexes:
+      // 0 1 2
+      // 3 4 5
+      // 6 7 8
+      const marksPosition = _getCellsWith(mark);
+      const cells = {};
+      for (position of marksPosition) {
+        cells[position] = true;
+      }
+      if (cells[0] && cells[1] && cells[2]) return true;
+      if (cells[3] && cells[4] && cells[5]) return true;
+      if (cells[6] && cells[7] && cells[8]) return true;
+      if (cells[0] && cells[3] && cells[6]) return true;
+      if (cells[1] && cells[4] && cells[7]) return true;
+      if (cells[2] && cells[5] && cells[8]) return true;
+      if (cells[0] && cells[4] && cells[8]) return true;
+      if (cells[6] && cells[4] && cells[2]) return true;
+      return false;
+    };
+    if (checkWinner(_playerMark)) return "player";
+    if (checkWinner(_computerMark)) return "computer";
+    if (_getEmptyCells().length === 0) return "draw";
+    return false;
   };
 
   function playRound(playerRowChoice, playerColChoice) {
