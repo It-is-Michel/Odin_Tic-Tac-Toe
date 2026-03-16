@@ -238,4 +238,8 @@ const ticTacToeGameUIController = (() => {
   const _resetGame = function() {
     ticTacToeGame.resetGame();
   };
+
+  const _playTurn = function(cellNumber) {
+    ticTacToeGame.playTurn(cellNumber);
+  };
 })();
