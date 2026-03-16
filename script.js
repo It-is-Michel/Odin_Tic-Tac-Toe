@@ -246,4 +246,54 @@ const ticTacToeGameUIController = (() => {
   const _updateDisplay = function() {
     throw new Error("not implemented");
   };
+
+  const init = (function init() {
+    _gameUIElement.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target === _setNameButton) {
+        _setName();
+        return;
+      };
+      if (target === _resetGameButton) {
+        _resetGame();
+        return;
+      };
+      if (target === _cell1Button) {
+        _playTurn(1);
+        return;
+      };
+      if (target === _cell2Button) {
+        _playTurn(2);
+        return;
+      };
+      if (target === _cell3Button) {
+        _playTurn(3);
+        return;
+      };
+      if (target === _cell4Button) {
+        _playTurn(4);
+        return;
+      };
+      if (target === _cell5Button) {
+        _playTurn(5);
+        return;
+      };
+      if (target === _cell6Button) {
+        _playTurn(6);
+        return;
+      };
+      if (target === _cell7Button) {
+        _playTurn(7);
+        return;
+      };
+      if (target === _cell8Button) {
+        _playTurn(8);
+        return;
+      };
+      if (target === _cell9Button) {
+        _playTurn(9);
+        return;
+      };
+    })
+  })();
 })();
