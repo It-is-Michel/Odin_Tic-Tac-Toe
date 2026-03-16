@@ -242,11 +242,29 @@ const ticTacToeGameUIController = (() => {
   };
 
   const _playTurn = function(cellNumber) {
-    ticTacToeGame.playTurn(cellNumber);
+    if (ticTacToeGame.playTurn(cellNumber)) _updateDisplay();
   };
 
   const _updateDisplay = function() {
-    throw new Error("not implemented");
+    // Update cells
+    const board = ticTacToeGame.getBoard();
+    for (let i = 0; i < _cellButtons.length; i++) {
+      const cell = _cellButtons[i];
+      cell.classList.remove(...cell.classList);
+      switch((board[i])) {
+        case "empty":
+          cell.classList.add("tic-tac-toe_select-cell-button");
+          continue;
+        case "x":
+          cell.classList.add("tic-tac-toe_select-cell-button-cross");
+          continue;
+        case "o":
+          cell.classList.add("tic-tac-toe_select-cell-button-circle");
+          continue;
+        default:
+          throw new Error(`_updateDisplay coudn't recognize what the cell content is: ${board[i]}`);
+      };
+    };
   };
 
   const init = (function init() {
