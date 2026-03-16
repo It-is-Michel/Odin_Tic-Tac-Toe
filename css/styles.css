@@ -104,3 +104,20 @@
   grid-template-columns: 1fr min-content 1fr;
   gap: var(--font-size-text-normal);
 }
+
+.footer {
+  padding: var(--font-size-text-normal);
+
+  background-color: rgb(53, 53, 53);
+
+  text-align: center;
+}
+
+.project-credits,
+.github-profile-link,
+.github-repository-link {
+  margin: 0;
+
+  line-height: 1.5;
+  color: white;
+}
