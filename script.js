@@ -213,15 +213,17 @@ const ticTacToeGameUIController = (() => {
   const _setNameButton = document.querySelector("#setNameButton");
   const _resetGameButton = document.querySelector("#setNameButton");
 
-  const _cell1Button = document.querySelector("#cell1Button");
-  const _cell2Button = document.querySelector("#cell2Button");
-  const _cell3Button = document.querySelector("#cell3Button");
-  const _cell4Button = document.querySelector("#cell4Button");
-  const _cell5Button = document.querySelector("#cell5Button");
-  const _cell6Button = document.querySelector("#cell6Button");
-  const _cell7Button = document.querySelector("#cell7Button");
-  const _cell8Button = document.querySelector("#cell8Button");
-  const _cell9Button = document.querySelector("#cell9Button");
+  const _cellButtons = {
+    cell1Button: document.querySelector("#cell1Button"),
+    cell2Button: document.querySelector("#cell2Button"),
+    cell3Button: document.querySelector("#cell3Button"),
+    cell4Button: document.querySelector("#cell4Button"),
+    cell5Button: document.querySelector("#cell5Button"),
+    cell6Button: document.querySelector("#cell6Button"),
+    cell7Button: document.querySelector("#cell7Button"),
+    cell8Button: document.querySelector("#cell8Button"),
+    cell9Button: document.querySelector("#cell9Button"),
+  }
 
   const _playerNameElement = document.querySelector("#playerName");
   const _playerWinsElement = document.querySelector("#playerWins");
@@ -258,39 +260,39 @@ const ticTacToeGameUIController = (() => {
         _resetGame();
         return;
       };
-      if (target === _cell1Button) {
+      if (target === _cellButtons.cell1Button) {
         _playTurn(1);
         return;
       };
-      if (target === _cell2Button) {
+      if (target === _cellButtons.cell2Button) {
         _playTurn(2);
         return;
       };
-      if (target === _cell3Button) {
+      if (target === _cellButtons.cell3Button) {
         _playTurn(3);
         return;
       };
-      if (target === _cell4Button) {
+      if (target === _cellButtons.cell4Button) {
         _playTurn(4);
         return;
       };
-      if (target === _cell5Button) {
+      if (target === _cellButtons.cell5Button) {
         _playTurn(5);
         return;
       };
-      if (target === _cell6Button) {
+      if (target === _cellButtons.cell6Button) {
         _playTurn(6);
         return;
       };
-      if (target === _cell7Button) {
+      if (target === _cellButtons.cell7Button) {
         _playTurn(7);
         return;
       };
-      if (target === _cell8Button) {
+      if (target === _cellButtons.cell8Button) {
         _playTurn(8);
         return;
       };
-      if (target === _cell9Button) {
+      if (target === _cellButtons.cell9Button) {
         _playTurn(9);
         return;
       };
