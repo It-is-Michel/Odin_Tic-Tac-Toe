@@ -59,7 +59,7 @@
 }
 
 .tic-tac-toe__edit-name-button,
-.tic-tac-toe__reset-game-button {
+.tic-tac-toe__clean-board-button {
   height: var(--button-height-normal);
   font-size: var(--font-size-text-normal);
 }

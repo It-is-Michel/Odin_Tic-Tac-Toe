@@ -29,6 +29,7 @@ const ticTacToeGame = (() => {
   };
 
   function _setCell(cellNumber, value) {
+    if (_gameEnded) return false;
     const cellIndex = cellNumber - 1;  // Convert cell number to cell index
     if (typeof value !== "string") throw new Error("Cells can only contain strings");
     const valueToUpperCase = value.toUpperCase();
@@ -75,44 +76,42 @@ const ticTacToeGame = (() => {
     return false;
   };
 
-  function _resetBoard() {
-    for (i in _board) {
-      _board[i] = "empty";
-    }
-  };
-
   let _lastWinner = null;
   function getLastWinner() {
     return _lastWinner;
   };
 
+  let _gameEnded = false;
   function _endGame(winner) {
-    _resetBoard();
+    _gameEnded = true;
     switch (winner) {
       case "draw":
         _lastWinner = "draw";
         return;
-        break;
       case "player":
         _player.addWin();
         _lastWinner = _player.getName();
         _computer.addLoss();
         return;
-        break;
       case "computer":
         _computer.addWin();
         _lastWinner = "computer";
         _player.addLoss();
         return;
-        break;
     }
     throw new Error(`Winner (${winner}) isn't a valid value.`);
   };
 
-  function resetGame() {
-    _resetBoard();
-    _player.resetScore();
-    _computer.resetScore();
+  function cleanBoard() {
+    if (_gameEnded) {
+      // Clean board
+      for (i in _board) {
+      _board[i] = "empty";
+      }
+      _gameEnded = false;
+      return;
+    }
+    console.error("You cannot reset the board 'til the game finish.")
   };
 
   function playRound(playerCellNumberChoice) {
@@ -204,7 +203,7 @@ const ticTacToeGame = (() => {
     getPlayerName,
     setPlayerName,
     playTurn : playRound,
-    resetGame,
+    cleanBoard,
     getComputerScore,
     getPlayerScore,
     getBoard,
@@ -216,7 +215,7 @@ const ticTacToeGameUIController = (() => {
   const _gameUIElement = document.querySelector("#tic-tac-toe__ui");
 
   const _setNameButton = document.querySelector("#setNameButton");
-  const _resetGameButton = document.querySelector("#resetGameButton");
+  const _cleanBoardButton = document.querySelector("#cleanBoardButton");
 
   const _cellButtons = [
     document.querySelector("#cell1Button"),
@@ -244,8 +243,8 @@ const ticTacToeGameUIController = (() => {
     throw new Error("not implemented");
   };
 
-  const _resetGame = function() {
-    ticTacToeGame.resetGame();
+  const _cleanBoard = function() {
+    ticTacToeGame.cleanBoard();
     _updateDisplay();
   };
 
@@ -301,8 +300,8 @@ const ticTacToeGameUIController = (() => {
         _setName();
         return;
       };
-      if (target === _resetGameButton) {
-        _resetGame();
+      if (target === _cleanBoardButton) {
+        _cleanBoard();
         return;
       };
       if (target === _cellButtons[0]) {
