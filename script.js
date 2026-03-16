@@ -230,4 +230,8 @@ const ticTacToeGameUIController = (() => {
   const _computerNameElement = document.querySelector("#computerName");
   const _computerWinsElement = document.querySelector("#computerWins");
   const _computerLossesElement = document.querySelector("#computerLosses");
+
+  const _setName = function() {
+    throw new Error("not implemented");
+  };
 })();
