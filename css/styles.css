@@ -20,7 +20,7 @@
     "top-wrapper     " min-content
     "board           " min-content
     "bottom-wrapper  " min-content
-    "messages-display" min-content / auto;
+    "messages-display" min-content / minmax(min-content, 15vw);
   gap: var(--font-size-text-normal);
 }
 
