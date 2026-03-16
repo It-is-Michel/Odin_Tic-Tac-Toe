@@ -270,6 +270,15 @@ const ticTacToeGameUIController = (() => {
           throw new Error(`_updateDisplay coudn't recognize what the cell content is: ${board[i]}`);
       };
     };
+
+    // Update player and computer scores
+    const {wins: playerWins, losses: playerLosses} = ticTacToeGame.getPlayerScore();
+    _playerWinsElement.textContent = `Wins: ${playerWins}`;
+    _playerLossesElement.textContent = `Losses: ${playerLosses}`;
+
+    const {wins: computerWins, losses: computerLosses} = ticTacToeGame.getComputerScore();
+    _computerWinsElement.textContent = `Wins: ${computerWins}`;
+    _computerLossesElement.textContent = `Losses: ${computerLosses}`;
   };
 
   const init = (function init() {
