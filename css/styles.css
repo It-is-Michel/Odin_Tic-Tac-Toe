@@ -17,9 +17,10 @@
 .tic-tac-toe-ui {
   display: grid;
   grid-template:
-    "top-wrapper   " min-content
-    "board         " min-content
-    "bottom-wrapper" min-content / auto;
+    "top-wrapper     " min-content
+    "board           " min-content
+    "bottom-wrapper  " min-content
+    "messages-display" min-content / auto;
   gap: var(--font-size-text-normal);
 }
 

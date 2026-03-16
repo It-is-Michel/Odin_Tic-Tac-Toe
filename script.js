@@ -238,6 +238,8 @@ const ticTacToeGameUIController = (() => {
   const _computerWinsElement = document.querySelector("#computerWins");
   const _computerLossesElement = document.querySelector("#computerLosses");
 
+  const _messagesDisplayElement = document.querySelector("#messagesDisplay");
+
   const _setName = function() {
     throw new Error("not implemented");
   };
@@ -280,6 +282,17 @@ const ticTacToeGameUIController = (() => {
     const {wins: computerWins, losses: computerLosses} = ticTacToeGame.getComputerScore();
     _computerWinsElement.textContent = `Wins: ${computerWins}`;
     _computerLossesElement.textContent = `Losses: ${computerLosses}`;
+
+    // Update messages display
+    const lastWinner = ticTacToeGame.getLastWinner();
+    switch(lastWinner) {
+      case "draw":
+        _messagesDisplayElement.textContent = "It's a draw!";
+        return;
+      case ticTacToeGame.getPlayerName():
+      case "computer":
+        _messagesDisplayElement.textContent = `${ticTacToeGame.getLastWinner()} won!`;
+    }
   };
 
   const init = (function init() {
