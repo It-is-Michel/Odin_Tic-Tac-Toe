@@ -234,4 +234,8 @@ const ticTacToeGameUIController = (() => {
   const _setName = function() {
     throw new Error("not implemented");
   };
+
+  const _resetGame = function() {
+    ticTacToeGame.resetGame();
+  };
 })();
