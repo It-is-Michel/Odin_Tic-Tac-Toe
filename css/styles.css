@@ -50,8 +50,19 @@
 
   display: grid;
   grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-  gap: calc(var(--font-size-text-normal) / 2);
+  gap: calc(2px);
+
+  background-color: black;
 }
+
+.tic-tac-toe_select-cell-button,
+.tic-tac-toe_select-cell-button-cross,
+.tic-tac-toe_select-cell-button-circle {
+  border: none;
+  border-radius: 0;
+  background-color: white;
+}
+
 
 /* Tic tac toe ui - bottom wrapper */
 
