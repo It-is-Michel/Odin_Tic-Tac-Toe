@@ -61,6 +61,7 @@
 .tic-tac-toe__edit-name-button,
 .tic-tac-toe__clean-board-button {
   height: var(--button-height-normal);
+  min-width: max-content;
   font-size: var(--font-size-text-normal);
 }
 
