@@ -242,4 +242,8 @@ const ticTacToeGameUIController = (() => {
   const _playTurn = function(cellNumber) {
     ticTacToeGame.playTurn(cellNumber);
   };
+
+  const _updateDisplay = function() {
+    throw new Error("not implemented");
+  };
 })();
