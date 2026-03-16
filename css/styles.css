@@ -2,10 +2,33 @@
   --font-size-text-tiny: calc(0.9rem + 0.1vh);
   --font-size-text-normal: calc(1rem + 0.1vh);
 
+  --font-size-logotype: calc(2rem + 0.1vh);
+
   --button-height-tiny: calc(var(--font-size-text-tiny) * 1.75 );
   --button-height-normal: calc(var(--font-size-text-normal) * 1.75 );
 }
 
+.web-wrapper {
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+.header {
+  height: min-content;
+
+  padding: var(--font-size-text-normal);
+
+  background-color: cadetblue;
+
+  font-size: var(--font-size-logotype);
+  text-align: center;
+}
+
+.header__web-logotype {
+  color: white;
+}
 
 /* Tic tac toe ui */
 
