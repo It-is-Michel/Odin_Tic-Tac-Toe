@@ -22,8 +22,10 @@
   <section class="tic-tac-toe-wrapper">
     <main class="tic-tac-toe-ui">
 
-      <button id="setNameButton" class="tic-tac-toe_edit-name-button" type="button">Edit name</button>
-      <button id="resetGameButton" class="tic-tac-toe_reset-game-button" type="button">Reset</button>
+      <div class="tic-tac-toe__top-wrapper">
+        <button id="setNameButton" class="tic-tac-toe_edit-name-button" type="button">Edit name</button>
+        <button id="resetGameButton" class="tic-tac-toe_reset-game-button" type="button">Reset</button>
+      </div>
 
       <div class="tic-tac-toe__board">
         <button id="selectCell1" class="tic-tac-toe_select-cell-button" type="button"s></button>
@@ -37,16 +39,18 @@
         <button id="selectCell9" class="tic-tac-toe_select-cell-button" type="button"s></button>
       </div>
 
-      <div class="tic-tac-toe_player-data">
-        <div id="playerName" class="tic-tac-toe__name">Player</div>
-        <div id="playerWins" class="tic-tac-toe__wins-counter">Wins: 0</div>
-        <div id="playerLosses" class="tic-tac-toe__losses-counter">Losses: 0</div>
-      </div>
-      <div class="tic-tac-toe__vs">vs</div>
-      <div class="tic-tac-toe_computer-data">
-        <div id="computerName" class="tic-tac-toe__name">Computer</div>
-        <div id="computerWins" class="tic-tac-toe__wins-counter">Wins: 0</div>
-        <div id="computerLosses" class="tic-tac-toe__losses-counter">Losses: 0</div>
+      <div class="tic-tac-toe__bottom-wrapper">
+        <div class="tic-tac-toe_player-data">
+          <div id="playerName" class="tic-tac-toe__name">Player</div>
+          <div id="playerWins" class="tic-tac-toe__wins-counter">Wins: 0</div>
+          <div id="playerLosses" class="tic-tac-toe__losses-counter">Losses: 0</div>
+        </div>
+        <div class="tic-tac-toe__vs">vs</div>
+        <div class="tic-tac-toe_computer-data">
+          <div id="computerName" class="tic-tac-toe__name">Computer</div>
+          <div id="computerWins" class="tic-tac-toe__wins-counter">Wins: 0</div>
+          <div id="computerLosses" class="tic-tac-toe__losses-counter">Losses: 0</div>
+        </div>
       </div>
 
     </main>

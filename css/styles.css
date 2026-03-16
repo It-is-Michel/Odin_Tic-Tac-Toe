@@ -1,4 +1,64 @@
+:root {
+  --font-size-text-tiny: calc(0.9rem + 0.1vh);
+  --font-size-text-normal: calc(1rem + 0.1vh);
+
+  --button-height-tiny: calc(var(--font-size-text-tiny) * 1.75 );
+  --button-height-normal: calc(var(--font-size-text-normal) * 1.75 );
+}
+
+
+/* Tic tac toe ui */
+
 .tic-tac-toe-wrapper {
   display: grid;
   place-items: center;
+}
+
+.tic-tac-toe-ui {
+  display: grid;
+  grid-template:
+    "top-wrapper   " min-content
+    "board         " min-content
+    "bottom-wrapper" min-content / auto;
+  gap: var(--font-size-text-normal);
+}
+
+
+/* Tic tac toe ui - top-wrapper*/
+
+.tic-tac-toe__top-wrapper {
+  grid-area: top-wrapper;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--font-size-text-normal);
+}
+
+.tic-tac-toe_edit-name-button,
+.tic-tac-toe_reset-game-button {
+  height: var(--button-height-normal);
+  font-size: var(--font-size-text-normal);
+}
+
+
+/* Tic tac toe ui - board*/
+
+.tic-tac-toe__board {
+  grid-area: board;
+
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  gap: calc(var(--font-size-text-normal) / 2);
+}
+
+/* Tic tac toe ui - bottom wrapper */
+
+.tic-tac-toe__bottom-wrapper {
+  grid-area: bottom-wrapper;
+
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  gap: var(--font-size-text-normal);
 }
