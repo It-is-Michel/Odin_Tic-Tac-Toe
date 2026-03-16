@@ -207,3 +207,28 @@ const ticTacToeGame = (() => {
     getLastWinner,
   };
 })();
+
+const ticTacToeGameUIController = (() => {
+  const _gameUIElement = document.querySelector("#tic-tac-toe__ui");
+  
+  const _setNameButton = document.querySelector("#setNameButton");
+  const _resetGameButton = document.querySelector("#setNameButton");
+
+  const _cell1Button = document.querySelector("#cell1Button");
+  const _cell2Button = document.querySelector("#cell2Button");
+  const _cell3Button = document.querySelector("#cell3Button");
+  const _cell4Button = document.querySelector("#cell4Button");
+  const _cell5Button = document.querySelector("#cell5Button");
+  const _cell6Button = document.querySelector("#cell6Button");
+  const _cell7Button = document.querySelector("#cell7Button");
+  const _cell8Button = document.querySelector("#cell8Button");
+  const _cell9Button = document.querySelector("#cell9Button");
+
+  const _playerNameElement = document.querySelector("#playerName");
+  const _playerWinsElement = document.querySelector("#playerWins");
+  const _playerLossesElement = document.querySelector("#playerLosses");
+
+  const _computerNameElement = document.querySelector("#computerName");
+  const _computerWinsElement = document.querySelector("#computerWins");
+  const _computerLossesElement = document.querySelector("#computerLosses");
+})();
