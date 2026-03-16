@@ -196,7 +196,12 @@ const ticTacToeGame = (() => {
     return _board;
   };
 
+  function getPlayerName() {
+    return _player.getName();
+  };
+
   return {
+    getPlayerName,
     setPlayerName,
     playTurn : playRound,
     resetGame,
