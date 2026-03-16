@@ -258,16 +258,15 @@ const ticTacToeGameUIController = (() => {
     const board = ticTacToeGame.getBoard();
     for (let i = 0; i < _cellButtons.length; i++) {
       const cell = _cellButtons[i];
-      cell.classList.remove(...cell.classList);
       switch((board[i])) {
         case "empty":
-          cell.classList.add("tic-tac-toe__select-cell-button");
+          cell.textContent = "";
           continue;
         case "x":
-          cell.classList.add("tic-tac-toe__select-cell-button-cross");
+          cell.textContent = "x";
           continue;
         case "o":
-          cell.classList.add("tic-tac-toe__select-cell-button-circle");
+          cell.textContent = "o";
           continue;
         default:
           throw new Error(`_updateDisplay coudn't recognize what the cell content is: ${board[i]}`);

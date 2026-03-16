@@ -81,20 +81,12 @@
   background-color: black;
 }
 
-.tic-tac-toe__select-cell-button,
-.tic-tac-toe__select-cell-button-cross,
-.tic-tac-toe__select-cell-button-circle {
+.tic-tac-toe__select-cell-button {
   border: none;
   border-radius: 0;
   background-color: white;
-}
 
-.tic-tac-toe__select-cell-button-cross {
-  background-color: red;
-}
-
-.tic-tac-toe__select-cell-button-circle {
-  background-color: blue;
+  font-size: calc(var(--font-size-text-normal) * 3);
 }
 
 /* Tic tac toe ui - bottom wrapper */
