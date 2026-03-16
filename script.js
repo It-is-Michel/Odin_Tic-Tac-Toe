@@ -216,7 +216,7 @@ const ticTacToeGameUIController = (() => {
   const _gameUIElement = document.querySelector("#tic-tac-toe__ui");
 
   const _setNameButton = document.querySelector("#setNameButton");
-  const _resetGameButton = document.querySelector("#setNameButton");
+  const _resetGameButton = document.querySelector("#resetGameButton");
 
   const _cellButtons = [
     document.querySelector("#cell1Button"),
@@ -244,6 +244,7 @@ const ticTacToeGameUIController = (() => {
 
   const _resetGame = function() {
     ticTacToeGame.resetGame();
+    _updateDisplay();
   };
 
   const _playTurn = function(cellNumber) {
