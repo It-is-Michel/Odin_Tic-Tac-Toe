@@ -22,19 +22,14 @@ const ticTacToeGame = (() => {
     return {getName, setName, getWins, addWin, getLosses, addLoss, resetScore};
   };
 
-  function _getBoardIndex(row, col) {
-    function _cellPositionIsValid(row, col) {
-      if (isNaN(row) || isNaN(col)) return false;
-      if (row <= 0 || row > 3) return false;
-      if (col <= 0 || col > 3) return false;
-      return true;
-    };
-    if (!_cellPositionIsValid(row, col)) throw new Error("Invalid cell position.");
-
-    return row * 3 + col - 4;
+  function _cellPositionIsValid(cellNumber) {
+    if (isNaN(cellNumber)) return false;
+    if (cellNumber < 0 || cellNumber > 9) return false;
+    return true;
   };
 
-  function _setCell(cellIndex, value) {
+  function _setCell(cellNumber, value) {
+    const cellIndex = cellNumber - 1;  // Convert cell number to cell index
     if (typeof value !== "string") throw new Error("Cells can only contain strings");
     const valueToUpperCase = value.toUpperCase();
     if (valueToUpperCase !== "X" && valueToUpperCase !== "O") throw new Error(`A cell can't be set to ${value}, just X or O.`);
@@ -56,22 +51,22 @@ const ticTacToeGame = (() => {
 
     function checkWinner(mark) {
       // board indexes:
-      // 0 1 2
-      // 3 4 5
-      // 6 7 8
+      // 1 2 3
+      // 4 5 6
+      // 7 8 9
       const marksPosition = _getCellsWith(mark);
       const cells = {};
       for (position of marksPosition) {
         cells[position] = true;
       }
-      if (cells[0] && cells[1] && cells[2]) return true;
-      if (cells[3] && cells[4] && cells[5]) return true;
-      if (cells[6] && cells[7] && cells[8]) return true;
-      if (cells[0] && cells[3] && cells[6]) return true;
+      if (cells[1] && cells[2] && cells[3]) return true;
+      if (cells[4] && cells[5] && cells[6]) return true;
+      if (cells[7] && cells[8] && cells[9]) return true;
       if (cells[1] && cells[4] && cells[7]) return true;
       if (cells[2] && cells[5] && cells[8]) return true;
-      if (cells[0] && cells[4] && cells[8]) return true;
-      if (cells[6] && cells[4] && cells[2]) return true;
+      if (cells[3] && cells[6] && cells[9]) return true;
+      if (cells[1] && cells[5] && cells[9]) return true;
+      if (cells[7] && cells[5] && cells[3]) return true;
       return false;
     };
     if (checkWinner(_playerMark)) return "player";
@@ -120,16 +115,18 @@ const ticTacToeGame = (() => {
     _computer.resetScore();
   };
 
-  function playRound(playerRowChoice, playerColChoice) {
+  function playRound(playerCellNumberChoice) {
     try {
-      const turnPassed = _playPlayerTurn(playerRowChoice, playerColChoice);
-      if (!turnPassed) return;
-    } catch {return};
+      const turnPassed = _playPlayerTurn(playerCellNumberChoice);
+      if (!turnPassed) return false;
+    } catch {
+      return false
+    };
 
     let winner = _getWinner();
     if (winner) {
       _endGame(winner);
-      return;
+      return true;
     }
 
     _playComputerTurn();
@@ -137,21 +134,23 @@ const ticTacToeGame = (() => {
     winner = _getWinner();
     if (winner) {
       _endGame(winner);
-      return;
+      return true;
     }
+
+    return true;
   };
 
-  function _playPlayerTurn(row, col) {
-    let cellIndex = null;
-    try {
-      cellIndex = _getBoardIndex(row, col);
-    } catch(error) {console.log(error)};
-    return _playTurn(cellIndex, _playerMark);
+  function _playPlayerTurn(cellNumber) {
+    if (!_cellPositionIsValid(cellNumber)) throw new Error("Cell number is not valid.");
+    return _playTurn(cellNumber, _playerMark);
   };
 
   function _getCellsWith(str) {
     return _board.reduce((acc, cell, index) => {
-      if (cell === str) acc.push(index);
+      if (cell === str) {
+        const cellNumber = index + 1;
+        acc.push(cellNumber);
+      }
       return acc;
       }, []);
   };
@@ -173,10 +172,10 @@ const ticTacToeGame = (() => {
     _player.setName(newName);
   };
 
-  function _playTurn(cellIndex, mark) {
+  function _playTurn(cellNumber, mark) {
     let movementIsDone = null;
     try {
-      movementIsDone = _setCell(cellIndex, mark);
+      movementIsDone = _setCell(cellNumber, mark);
     } catch(error) {
       console.error(error);
       return;
@@ -210,7 +209,7 @@ const ticTacToeGame = (() => {
 
 const ticTacToeGameUIController = (() => {
   const _gameUIElement = document.querySelector("#tic-tac-toe__ui");
-  
+
   const _setNameButton = document.querySelector("#setNameButton");
   const _resetGameButton = document.querySelector("#setNameButton");
 
